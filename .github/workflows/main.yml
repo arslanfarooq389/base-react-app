@@ -1,13 +1,14 @@
-name: Deploy Website
+name: Deploy React App on Surge with Yarn
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Deploying to surge
     steps:
-      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
         with:
@@ -22,5 +23,5 @@ jobs:
       - name: Install Surge
         run: npm install -g surge
       - name: Run surge
-        run: surge ./my1stbasereactapp.sure.sh --token ${{secrets.SURGE_TOKEN}}
+        run: surge ./my1stbasereactapp.surge.sh --token ${{secrets.SURGE_TOKEN}}
        
